@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/Card.css";
 
 export default function Card(props) {
   const [IsClicked, setIsClicked] = useState(false);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import "../styles/CardDisplay.css"
 import uniqid from "uniqid";
 import Card from "./Card"
 

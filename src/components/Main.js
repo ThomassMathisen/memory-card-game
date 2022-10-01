@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Main.css"
 import CardDisplay from "./CardDisplay"
 
 export default function Main(props) {
