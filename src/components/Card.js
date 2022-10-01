@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 export default function Card(props) {
-  const [isClicked, setIsClicked] = useState(false);
+  const [IsClicked, setIsClicked] = useState(false);
 
   function handleClick() {
     IsClicked ? clickedCard() : notClickedCard();
-    props.shuffleCards;
+    props.shuffleCards();
   }
 
   function clickedCard() {
