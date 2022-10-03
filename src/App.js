@@ -1,19 +1,16 @@
-import React, { useState } from "react";
-import "./styles/App.css";
+import React from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 
-function App() {
-
-  const [scores, setScores] = useState({best: 0, current: 0})
+const App = () => {
   return (
-    <div className="App">
-      <Header scores={scores} />
-      <Main setScores={setScores} />
+    <>
+      <Header />
+      <Main />
       <Footer />
-    </div>
-  );
+    </>
+  )
 }
 
 export default App;

@@ -1,15 +1,25 @@
 import React from "react";
-import "../styles/Header.css"
-import Scoreboard from "./Scoreboard";
+import styled from "styled-components"
 
-export default function Header(props) {
+
+const Header = () => {
   return (
-    <header className="header">
-      <div>
-        <h1>Memory Card Game</h1>
+    <>
+      <HeaderWrapper>
+        <h2>Memory Game</h2>
         <p>Don't click on the same card twice!</p>
-      </div>
-      <Scoreboard score={props.scores} />
-    </header>
+      </HeaderWrapper>
+    </>
   );
 }
+
+const HeaderWrapper = styled.header`
+  display: flex;
+  padding: 10px;
+  height: 100px;
+  align-items: center;
+  color: ${({ theme }) => theme.colors.light};
+  justify-content: space-around;
+  background-color: ${({ theme }) => theme.colors.dark};
+` 
+export default Header
