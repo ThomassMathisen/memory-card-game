@@ -1,15 +1,16 @@
-import React from "react"
-import styled from "styled-components"
-import Card from "./Card"
+import React from 'react'
+import styled from 'styled-components'
+import Card from './Card'
 
-const CardDisplay = ({ cards, handleCardClick }) => {
-  const deckOfCards = cards.map((card) => (
-    <Card key={card.id} card={card.value} handleCardClick={handleCardClick}/>
-  )) 
-  return <CardsDisplayWrapper>{deckOfCards}</CardsDisplayWrapper>
+const CardsDisplay = ({ pokemons, handleCardClick }) => {
+  const pokemonCards = pokemons.map((pokemon) => (
+    <Card key={pokemon.id} pokemon={pokemon} handleCardClick={handleCardClick}/>
+  ))
+
+  return <CardsGridWrapper>{pokemonCards}</CardsGridWrapper>
 }
 
-const CardsDisplayWrapper = styled.div`
+const CardsGridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
@@ -21,4 +22,4 @@ const CardsDisplayWrapper = styled.div`
   }
 `
 
-export default CardDisplay
+export default CardsDisplay
