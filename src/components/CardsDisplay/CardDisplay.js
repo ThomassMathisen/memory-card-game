@@ -7,10 +7,10 @@ const CardsDisplay = ({ pokemons, handleCardClick }) => {
     <Card key={pokemon.id} pokemon={pokemon} handleCardClick={handleCardClick}/>
   ))
 
-  return <CardsGridWrapper>{pokemonCards}</CardsGridWrapper>
+  return <CardsDisplayWrapper>{pokemonCards}</CardsDisplayWrapper>
 }
 
-const CardsGridWrapper = styled.div`
+const CardsDisplayWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
