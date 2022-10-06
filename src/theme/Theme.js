@@ -3,11 +3,11 @@ export const Theme = {
       light: '#eee',
       lightHover: '#ccc',
       lightActive: '#aaa',
-      dark: '#383838',
+      dark: '#1F2937',
       darkHover: '#272727',
       darkActive: '#161616',
-      green: '#b5ffb5',
-      red: '#ffb5b5',
+      green: '#006B4B',
+      red: '#931616',
     },
   }
   

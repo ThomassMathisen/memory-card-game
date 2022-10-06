@@ -1,3 +1,3 @@
-import CardsGrid from 'CardsGrid'
+import CardsDisplay from 'CardsDisplay'
 
-export default CardsGrid
+export default CardsDisplay

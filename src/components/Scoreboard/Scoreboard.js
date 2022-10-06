@@ -38,10 +38,12 @@ const Score = styled.div`
 
 const CurrentScore = styled(Score)`
   background-color: ${({ theme }) => theme.colors.red};
+  color: ${({ theme }) => theme.colors.light};
 `
 
 const HighScore = styled(Score)`
   background-color: ${({ theme }) => theme.colors.green};
+  color: ${({ theme }) => theme.colors.light};
 `
 
 export default Scoreboard

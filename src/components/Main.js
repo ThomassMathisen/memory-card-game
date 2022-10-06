@@ -1,72 +1,72 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components"
-import Scoreboard from "./Scoreboard/Scoreboard";
-import CardDisplay from "./CardsDisplay/CardDisplay"
-import { capitalizeFirstLetter, shuffleArray } from "../utils"
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import Scoreboard from './Scoreboard/Scoreboard'
+import CardsDisplay from './CardsDisplay/CardDisplay'
+import { capitalizeFirstLetter, shuffleArray } from '../utils'
 
 const Main = () => {
-  const CARDS_AMOUNT = 10
-  const [cards, setCards] = useState([])
-  const [clickedCards, setClickedCards] = useState([])
+  const POKEMONS_AMOUNT = 12
+  const [pokemons, setPokemons] = useState([])
+  const [clickedPokemons, setClickedPokemons] = useState([])
   const [currentScore, setCurrentScore] = useState(0)
   const [highScore, setHighScore] = useState(0)
 
   useEffect(() => {
     const loadCards = async () => {
-      setCards(shuffleArray(await fetchCards(CARDS_AMOUNT)))
+      setPokemons(shuffleArray(await fetchPokemons(POKEMONS_AMOUNT)))
     }
 
     loadCards()
   }, [])
 
-  const fetchCards = async (amount) => {
-    const cards = []
+  const fetchPokemons = async (amount) => {
+    const pokemons = []
 
     for (let i = 1; i <= amount; i++) {
-      const cardsUrl = `https://www.deckofcardsapi.com/api/deck/new/draw/?count=${i}`
-      const response = await fetch(cardsUrl)
-      const card = await response.json()
-      const id = card.deck_id
-      const name = capitalizeFirstLetter(card.value)
-      const image = card.image
-      cards.push({ id, name, image })
+      const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${i}`
+      const response = await fetch(pokemonUrl)
+      const pokemon = await response.json()
+      const id = pokemon.id
+      const name = capitalizeFirstLetter(pokemon.name)
+      const image = pokemon.sprites.front_default
+      pokemons.push({ id, name, image })
     }
 
-    return cards
+    return pokemons
   }
 
   const handleCardClick = (e) => {
-    const cardName = e.target.parentnode.lastChild.textContent
-    playRound(cardName)
-    setCards(shuffleArray(cards))
+    const pokemonName = e.target.parentNode.lastChild.textContent
+    playRound(pokemonName)
+    setPokemons(shuffleArray(pokemons))
   }
 
-  const playRound = (cardName) => {
-    if (clickedCards.includes(cardName)) {
+  const playRound = (pokemonName) => {
+    if (clickedPokemons.includes(pokemonName)) {
       resetGame()
     } else {
       const newScore = currentScore + 1
       if (newScore > highScore) setHighScore(newScore)
       setCurrentScore(newScore)
-      setClickedCards((prevState) => [...prevState, cardName])
+      setClickedPokemons((prevState) => [...prevState, pokemonName])
     }
   }
 
   const resetGame = () => {
-    setClickedCards([])
+    setClickedPokemons([])
     setCurrentScore(0)
   }
 
   return (
     <MainWrapper>
-      <Scoreboard>
+      <Scoreboard
         currentScore={currentScore}
         highScore={highScore}
-      </Scoreboard>
-      <CardDisplay
-        cards={cards}
+      ></Scoreboard>
+      <CardsDisplay
+        pokemons={pokemons}
         handleCardClick={handleCardClick}
-      ></CardDisplay>
+      ></CardsDisplay>
     </MainWrapper>
   )
 }
